@@ -1,38 +1,35 @@
-import {
-    getColorByColorObjArr,
-    getTiny,
-} from "@/utils"
+import { getColorByColorObjArr, getTiny } from '@/utils'
 
-import { Panel } from "./panel"
+import { Panel } from './panel'
 
-let panel = new Panel()
+const panel = new Panel()
 
 window.addEventListener(
-    "mouseup",
-    (e) => {
-        let raw = window.getSelection()?.toString().trim()
+  'mouseup',
+  (e) => {
+    const raw = window.getSelection()?.toString().trim()
 
-        let x = e.pageX
-        let y = e.pageY
+    const x = e.pageX
+    const y = e.pageY
 
-        if (raw) {
-            if (panel.container) panel.hide()
-            const color = getTiny(raw)
-            if (color.isValid) {
-                chrome.storage.sync.get((items) => {
-                    const result = getColorByColorObjArr(
-                        color.toHexString(),
-                        items.colors
-                    )
-                    if (result.length > 0) {
-                        panel.show({
-                            result,
-                            pos: { x, y },
-                        })
-                    }
-                })
-            }
-        }
-    },
-    true
+    if (raw) {
+      if (panel.container) panel.hide()
+      const color = getTiny(raw)
+      if (color.isValid) {
+        chrome.storage.sync.get((items) => {
+          const result = getColorByColorObjArr(
+            color.toHexString(),
+            items.colors
+          )
+          if (result.length > 0) {
+            panel.show({
+              result,
+              pos: { x, y },
+            })
+          }
+        })
+      }
+    }
+  },
+  true
 )

@@ -1,58 +1,56 @@
-import React from "react"
-import { createRoot } from "react-dom/client"
-import { Content, ColorItem } from "./Content"
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { Content, ColorItem } from './Content'
 
 export type PosTypes = {
-    x: number
-    y: number
+  x: number
+  y: number
 }
 
 export class Panel {
-    rootId: string
-    container: HTMLElement | undefined | null
+  rootId: string
 
-    constructor(props?: { rootId: string }) {
-        this.rootId = props?.rootId || "theme-color-picker-content"
-    }
+  container: HTMLElement | undefined | null
 
-    createContainer(pos: PosTypes) {
-        let container: HTMLElement = document.createElement("div")
+  constructor(props?: { rootId: string }) {
+    this.rootId = props?.rootId || 'theme-color-picker-content'
+  }
 
-        container.id = this.rootId
+  createContainer(pos: PosTypes) {
+    const container: HTMLElement = document.createElement('div')
 
-        container.style.position = "absolute"
-        container.style.top = pos.y + "px"
-        container.style.left = pos.x + "px"
+    container.id = this.rootId
 
-        document.body.appendChild(container)
+    container.style.position = 'absolute'
+    container.style.top = `${pos.y}px`
+    container.style.left = `${pos.x}px`
 
-        return container
-    }
+    document.body.appendChild(container)
 
-    show({ pos, result }: { pos: PosTypes; result: ColorItem[] }) {
-        this.clearContainer()
+    return container
+  }
 
-        const container = this.createContainer(pos)
+  show({ pos, result }: { pos: PosTypes; result: ColorItem[] }) {
+    this.hide()
 
-        this.container = container
+    const container = this.createContainer(pos)
 
-        const root = createRoot(document.getElementById(this.rootId)!)
+    this.container = container
 
-        root.render(
-            <React.StrictMode>
-                <Content {...{ colors: result, onClose: this.hide.bind(this) }} />
-            </React.StrictMode>
-        )
+    const rootDom = document.getElementById(this.rootId) as HTMLElement
 
-    }
+    const root = createRoot(rootDom)
 
-    clearContainer() {
-        const containers = document.getElementById("theme-color-picker-content")
-        if (containers) document.body.removeChild(containers)
-    }
+    root.render(
+      <React.StrictMode>
+        <Content {...{ colors: result, onClose: this.hide.bind(this) }} />
+      </React.StrictMode>
+    )
+  }
 
-    hide() {
-        this.clearContainer()
-        this.container = null
-    }
+  hide() {
+    const containers = document.getElementById('theme-color-picker-content')
+    if (containers) document.body.removeChild(containers)
+    this.container = null
+  }
 }

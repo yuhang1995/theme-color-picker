@@ -1,54 +1,54 @@
-import { getColorHexString } from "./color"
+import { getColorHexString } from './color'
 
 interface ColorTheme {
-    name: string
-    color: string
+  name: string
+  color: string
 }
 
 type ColorThemes = Array<ColorTheme>
 
 interface ResultColorItem {
-    name: string
-    value: string
-    color: string
+  name: string
+  value: string
+  color: string
 }
 
 export function findKeyByValue(value: string, obj: ColorTheme): string {
-    const entries = Object.entries(obj)
-    const result: string[] = []
+  const entries = Object.entries(obj)
+  const result: string[] = []
 
-    for (const [key, val] of entries) {
-        if (typeof val === "string") {
-            if (getColorHexString(val) === getColorHexString(value)) {
-                result.push(key)
-                break
-            }
-        } else {
-            const nestedResult = findKeyByValue(value, val)
-            if (nestedResult.length > 0) {
-                result.push(key, ...nestedResult.split("."))
-            }
-        }
+  for (const [key, val] of entries) {
+    if (typeof val === 'string') {
+      if (getColorHexString(val) === getColorHexString(value)) {
+        result.push(key)
+        break
+      }
+    } else {
+      const nestedResult = findKeyByValue(value, val)
+      if (nestedResult.length > 0) {
+        result.push(key, ...nestedResult.split('.'))
+      }
     }
-    return result.join(".")
+  }
+  return result.join('.')
 }
 
 export function getColorByColorObjArr(
-    color: string,
-    colorObjArr: ColorThemes
+  color: string,
+  colorObjArr: ColorThemes
 ): ResultColorItem[] {
-    const result: ResultColorItem[] = []
+  const result: ResultColorItem[] = []
 
-    for (const colorObj of colorObjArr) {
-        const value = findKeyByValue(color, JSON.parse(colorObj.color))
-        if (value) {
-            result.push({
-                name: colorObj.name,
-                color,
-                value,
-            })
-        }
+  for (const colorObj of colorObjArr) {
+    const value = findKeyByValue(color, JSON.parse(colorObj.color))
+    if (value) {
+      result.push({
+        name: colorObj.name,
+        color,
+        value,
+      })
     }
+  }
 
-    return result
+  return result
 }
