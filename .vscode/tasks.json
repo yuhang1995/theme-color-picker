@@ -11,23 +11,23 @@
       "args": ["install"]
     },
     {
-      "label": "update",
-      "type": "shell",
-      "command": "pnpm",
-      "args": ["update"]
-    },
-    {
       "label": "test",
       "type": "shell",
       "command": "pnpm",
       "args": ["run", "test"]
     },
     {
+      "label": "dev",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["run", "watch"]
+    },
+    {
       "label": "build",
       "type": "shell",
       "group": "build",
       "command": "pnpm",
-      "args": ["run", "watch"]
+      "args": ["run", "build"]
     }
   ]
 }
