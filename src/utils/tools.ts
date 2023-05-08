@@ -9,11 +9,11 @@ type ColorThemes = Array<ColorTheme>
 
 interface ResultColorItem {
   name: string
-  value: string
+  value: string[]
   color: string
 }
 
-export function findKeyByValue(value: string, obj: ColorTheme): string {
+export function findKeyByValue(value: string, obj: ColorTheme): string[] {
   const entries = Object.entries(obj)
   const result: string[] = []
 
@@ -21,16 +21,15 @@ export function findKeyByValue(value: string, obj: ColorTheme): string {
     if (typeof val === 'string') {
       if (getColorHexString(val) === getColorHexString(value)) {
         result.push(key)
-        break
       }
     } else {
       const nestedResult = findKeyByValue(value, val)
       if (nestedResult.length > 0) {
-        result.push(key, ...nestedResult.split('.'))
+        result.push(...nestedResult.map((nestedKey) => `${key}.${nestedKey}`))
       }
     }
   }
-  return result.join('.')
+  return result
 }
 
 export function getColorByColorObjArr(
@@ -41,7 +40,7 @@ export function getColorByColorObjArr(
 
   for (const colorObj of colorObjArr) {
     const value = findKeyByValue(color, JSON.parse(colorObj.color))
-    if (value) {
+    if (value.length > 0) {
       result.push({
         name: colorObj.name,
         color,
