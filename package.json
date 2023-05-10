@@ -1,7 +1,7 @@
 {
-    "name": "chrome-extension-typescript-starter",
+    "name": "theme-color-picker",
     "version": "1.0.0",
-    "description": "chrome-extension-typescript-starter",
+    "description": "theme-color-picker",
     "main": "index.js",
     "scripts": {
         "watch": "rimraf dist && webpack --config webpack/webpack.dev.js --watch",
@@ -13,13 +13,14 @@
         "prettier": "npx prettier ./src --check",
         "prettier:fix": "pnpm run prettier --write",
         "format": "pnpm run prettier:fix && pnpm run lint:fix",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "release": "pnpm run build && mkdir release && zip -r release/themeColorPicker.zip dist"
     },
-    "author": "",
+    "author": "aike",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
+        "url": "https://github.com/yuhang1995/theme-color-picker"
     },
     "lint-staged": {
         "*.(ts|tsx)": [

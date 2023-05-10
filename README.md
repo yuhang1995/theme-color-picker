@@ -1,71 +1,42 @@
-# Chrome Extension TypeScript Starter
+<p align="center">
+    <img src="./public/img/icon_128.png" alt="themeColorPicker" weight="100px" height="100px">
+    <h1 align="center">Theme-color-picker</h1>
+</p>
 
-![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
+Theme-color-picker 是一个浏览器插件，可以让你在设计稿中快速找到主题中的颜色值，让你不再为记不住颜色烦恼
 
-Chrome Extension, TypeScript and Visual Studio Code
+## 快速开始
 
-## Prerequisites
+通过 chrome webstor 或者直接下载 zip 文件，安装后设置项目主题即可使用
 
-- [node + npm](https://nodejs.org/) (Current Version)
+1. 安装插件
+2. 设置项目主题
+3. 在原型或者 UI 设计图中选择颜色
 
-## Option
+<!-- <img src="./images/20230509-145141.jpg" alt="example1" height="200px"> -->
 
-- [Visual Studio Code](https://code.visualstudio.com/)
+<img src="./images/20230510-101257.jpg" alt="themeColorPickerDemo1" width="500px">
 
-## Includes the following
+<img src="./images/20230510-101305.jpg" alt="themeColorPickerDemo2" width="500px">
 
-- TypeScript
-- Webpack
-- React
-- Jest
-- Example Code
-  - Chrome Storage
-  - Options Version 2
-  - content script
-  - count up badge number
-  - background
+<img src="./images/20230509-145141.jpg" alt="themeColorPickerDemo3" width="500px">
 
-## Project Structure
+## 安装
 
-- src/typescript: TypeScript source files
-- src/assets: static files
-- dist: Chrome Extension directory
-- dist/js: Generated JavaScript files
+### Webstore 商店安装
 
-## Setup
+<a href="#"><img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_128x128.png" width="48" /></a>
 
-```
-npm install
-```
+### 手动安装
 
-## Import as Visual Studio Code project
+首先在 [release](https://github.com/yuhang1995/theme-color-picker/releases) 页下载相应版本的 `themeColorPicker.zip` 并解压
 
-...
+**Chrome 安装扩展：**
 
-## Build
+打开 `chrome://extensions/`
 
-```
-npm run build
-```
+打开右上角 `开发者模式`
 
-## Build in watch mode
+点击左上角 `加载已解压的扩展程序`
 
-### terminal
-
-```
-npm run watch
-```
-
-### Visual Studio Code
-
-Run watch mode.
-
-type `Ctrl + Shift + B`
-
-## Load extension to chrome
-
-Load `dist` directory
-
-## Test
-
-`npx jest` or `npm run test`
+选择解压出的 `dist` 目录
