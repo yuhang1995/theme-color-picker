@@ -9,6 +9,7 @@ updates:
     directory: '/' # Location of package manifests
     schedule:
       interval: 'daily'
+    target-branch: 'develop'
     reviewers:
       - yuhang1995
     labels:
