@@ -39,7 +39,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.22.5",
-        "@babel/preset-env": "^7.22.5",
+        "@babel/preset-env": "^7.22.9",
         "@babel/preset-react": "^7.22.5",
         "@types/chrome": "0.0.241",
         "@types/jest": "^29.5.2",
