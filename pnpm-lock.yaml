@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^7.22.5
     version: 7.22.5(@babel/core@7.21.8)
   '@types/chrome':
-    specifier: 0.0.236
-    version: 0.0.236
+    specifier: 0.0.248
+    version: 0.0.248
   '@types/jest':
     specifier: ^29.5.3
     version: 29.5.3
@@ -2004,8 +2004,8 @@ packages:
       '@babel/types': 7.22.5
     dev: true
 
-  /@types/chrome@0.0.236:
-    resolution: {integrity: sha512-ArQoxO9WtDY6GWcT2cpo+D+hyASPeFt7PHQEUDXwQhRS00Rbop07rnEOA046yws0HkM83Tcew/hW6Dgvnj4iMQ==}
+  /@types/chrome@0.0.248:
+    resolution: {integrity: sha512-qtBzxZD1v3eWZn8XxH1i07pAhzJDHnxJBBVy7bmntXxXKxjzNXYxD41teqa5yOcX/Yy8brRFGZESEzGoINvBDg==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.10
